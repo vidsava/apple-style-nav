@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple-Style Navigation with Tailwind CSS</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* CSS-only mobile menu toggle functionality */
+        #menu-toggle:checked ~ #mobile-menu {
+            display: block;
+        }
+        #menu-toggle:checked ~ .menu-button .open {
+            display: none;
+        }
+        #menu-toggle:checked ~ .menu-button .close {
+            display: block;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Hidden checkbox for CSS-only toggle -->
+    <input type="checkbox" id="menu-toggle" class="hidden">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-black bg-opacity-90 backdrop-blur-md text-white fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-white">
+                        <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.09 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation - hidden on small screens, visible on medium and up -->
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="#" class="text-sm font-medium text-white hover:text-gray-300 transition-colors duration-200">Store</a>
+                    <a href="#" class="text-sm font-medium text-white hover:text-gray-300 transition-colors duration-200">Mac</a>
+                    <a href="#" class="text-sm font-medium text-white hover:text-gray-300 transition-colors duration-200">iPad</a>
+                    <a href="#" class="text-sm font-medium text-white hover:text-gray-300 transition-colors duration-200">iPhone</a>
+                    <a href="#" class="text-sm font-medium text-white hover:text-gray-300 transition-colors duration-200">Watch</a>
+                    <a href="#" class="text-sm font-medium text-white hover:text-gray-300 transition-colors duration-200">Vision</a>
+                    <a href="#" class="text-sm font-medium text-white hover:text-gray-300 transition-colors duration-200">Support</a>
+                </div>
+
+                <!-- Right side icons - hidden on small screens -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#" class="text-white hover:text-gray-300 transition-colors duration-200">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-white hover:text-gray-300 transition-colors duration-200">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button - visible only on small screens -->
+                <label for="menu-toggle" class="menu-button md:hidden cursor-pointer flex items-center">
+                    <svg class="h-6 w-6 open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg class="h-6 w-6 close hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </label>
+            </div>
+            
+            <!-- Mobile menu, CSS-only toggle with checkbox hack -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-gray-700">
+                <div class="space-y-1 px-2 pt-2">
+                    <a href="#" class="block py-2 text-base font-medium text-white hover:text-gray-300 border-b border-gray-700">Store</a>
+                    <a href="#" class="block py-2 text-base font-medium text-white hover:text-gray-300 border-b border-gray-700">Mac</a>
+                    <a href="#" class="block py-2 text-base font-medium text-white hover:text-gray-300 border-b border-gray-700">iPad</a>
+                    <a href="#" class="block py-2 text-base font-medium text-white hover:text-gray-300 border-b border-gray-700">iPhone</a>
+                    <a href="#" class="block py-2 text-base font-medium text-white hover:text-gray-300 border-b border-gray-700">Watch</a>
+                    <a href="#" class="block py-2 text-base font-medium text-white hover:text-gray-300 border-b border-gray-700">Vision</a>
+                    <a href="#" class="block py-2 text-base font-medium text-white hover:text-gray-300 border-b border-gray-700">Support</a>
+                </div>
+                <div class="flex justify-start space-x-6 px-2 pt-4">
+                    <a href="#" class="text-white hover:text-gray-300 transition-colors duration-200">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-white hover:text-gray-300 transition-colors duration-200">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page content for demonstration -->
+    <main class="pt-20 px-4 max-w-7xl mx-auto">
+        <section class="py-12 text-center">
+            <h1 class="text-4xl font-bold mb-4">Welcome to Our Site</h1>
+            <p class="text-xl max-w-3xl mx-auto">This is a demo page with an Apple-style navigation bar. Try resizing your browser window to see how the navigation responds!</p>
+        </section>
+    </main>
+</body>
+</html>
